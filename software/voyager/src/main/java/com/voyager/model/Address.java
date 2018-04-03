@@ -3,19 +3,20 @@ package com.voyager.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "ADDRESS_TBL")
-public class Address {
+public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="tourist_id")
-    private Tourist tourist;
+  /*  @ManyToOne
+    @JoinColumn(name="tourist_id",nullable=false)
+    private Tourist tourist;*/
 
     @Column
     @NotNull
@@ -48,6 +49,6 @@ public class Address {
     public void setState(String state) { this.state = state; }
     public void setStreet(String street) { this.street = street; }
     public void setZipcode(int zipcode) { this.zipcode = zipcode; }
-    public Tourist getTourist() { return tourist; }
-    public void setTourist(Tourist tourist) { this.tourist = tourist; }
+    /*public Tourist getTourist() { return tourist; }
+    public void setTourist(Tourist tourist) { this.tourist = tourist; }*/
 }

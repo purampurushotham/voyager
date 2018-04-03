@@ -3,15 +3,15 @@ package com.voyager.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "PASSPORT_TBL")
-public class Passport {
+public class Passport implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "passport")
-    @SequenceGenerator(name="passport",sequenceName="passport",allocationSize = 30)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long p_id;
 
     @Column

@@ -3,16 +3,18 @@ package com.voyager.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "TOURIST_TBL")
-public class Tourist {
+public class Tourist implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tou_seq")
-    @SequenceGenerator(name = "tou_seq", sequenceName="tou_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column
@@ -31,18 +33,8 @@ public class Tourist {
     @Temporal(TemporalType.DATE)
     private Date dob;
 
-
-    @OneToMany(mappedBy = "tourist", cascade = CascadeType.ALL)
-    private Address addressList;
-/*
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="tour_id")*/
-    private List<Tour> tours;
-
-
-    @OneToOne(mappedBy = "passport", cascade = CascadeType.ALL)
-    @JoinColumn(name="pass_id")
-    private Long passportId;
+    /*@OneToMany(mappedBy = "tourist")
+    private Set<Address> addressList;*/
 
     public void setId(int id) {
         this.id = id;
@@ -56,9 +48,9 @@ public class Tourist {
         this.lastName = lastName;
     }
 
-    public void setAddressList(Address addressList) {
+    /*public void setAddressList(Set<Address> addressList) {
         this.addressList = addressList;
-    }
+    }*/
 
     public void setDob(Date dob) {
         this.dob = dob;
@@ -79,23 +71,16 @@ public class Tourist {
     public Date getDob() {
         return dob;
     }
-    public Address getAddressList() {
+    /*public Set<Address> getAddressList() {
         return addressList;
     }
-
+/*
     public List<Tour> getTours() {
         return tours;
     }
 
     public void setTours(List<Tour> tours) {
         this.tours = tours;
-    }
+    }*/
 
-    public Long getPasspoedId() {
-        return passportId;
-    }
-
-    public void setPasspoedId(Long passpoedId) {
-        this.passportId = passpoedId;
-    }
 }

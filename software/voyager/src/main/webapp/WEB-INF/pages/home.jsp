@@ -15,9 +15,10 @@
 <div align="center">
             <h1>Tours List</h1>
             <h3>
+    Tours
     <%--            <a href="newTour">New Employee</a>--%>
             </h3>
-            <table border="1">
+        <%--    <table border="1">
      
                 <th>Place</th>
                 <th>Package Type</th>
@@ -36,7 +37,7 @@
      
                     </tr>
                 </c:forEach>
-            </table>
+            </table>--%>
         </div>
 </body>
 </html>
